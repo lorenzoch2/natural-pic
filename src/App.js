@@ -12,12 +12,12 @@ export default function App() {
   const shareInfo = { pics, setPics };
 
   const naturalPicsApi = async() => {
-    const response = await fetch("/fotos.json");
+    const response = await fetch(`${process.env.PUBLIC_URL}/fotos.json`);
     const data = await response.json();
     setPics(data.photos)
   } 
 
-  useEffect(() => {
+    useEffect(() => {
     naturalPicsApi();
   }, []);
 
