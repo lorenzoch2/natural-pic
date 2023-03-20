@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/natural-pic/static/css/main.96bc5103.css",
+    "main.js": "/natural-pic/static/js/main.6ba1f2a9.js",
+    "index.html": "/natural-pic/index.html",
+    "main.96bc5103.css.map": "/natural-pic/static/css/main.96bc5103.css.map",
+    "main.6ba1f2a9.js.map": "/natural-pic/static/js/main.6ba1f2a9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.96bc5103.css",
+    "static/js/main.6ba1f2a9.js"
+  ]
+}
