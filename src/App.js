@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import "./styles.css";
+import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-function App() {
+import Navbar from "./components/Navbar";
+import Home from "./views/Home";
+import Favoritos from "./views/Favoritos";
+import Context from "./Context";
+
+export default function App() {
+  const [pics, setPics] = useState([]);
+  const shareInfo = { pics, setPics };
+
+  const naturalPicsApi = async() => {
+    const response = await fetch("/fotos.json");
+    const data = await response.json();
+    setPics(data.photos)
+  } 
+
+  useEffect(() => {
+    naturalPicsApi();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Context.Provider value={shareInfo}>
+        <BrowserRouter basename="/natural-pic">
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/favoritos" element={<Favoritos />} />
+          </Routes>
+        </BrowserRouter>
+      </Context.Provider>
     </div>
   );
 }
-
-export default App;
